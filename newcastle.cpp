@@ -21,6 +21,7 @@ int factorial(int n)
         return 1;
     return n * factorial(n - 1);
 }
+
 //find 
 // all a and b are possible when calling this function
 void counting(int a, int b, vector<int> remaining)
@@ -50,8 +51,13 @@ void counting(int a, int b, vector<int> remaining)
     while (i <= min(b / 2, remaining[2]))
     {
         
-        // possible corresponding cls to b
+        // possible ways of choosing corresponding cls to b
         //possible b's permutation
+        // number of ways to select a
+    int select_i_way = choose(remaining[2], i);
+
+    // number of ways to select b
+    int select_j_way = choose(remaining[2] - i + remaining[3], j);
         int b_permu_cl = factorial(b) / pow(2,i);
         
         
@@ -77,6 +83,7 @@ void counting(int a, int b, vector<int> remaining)
             cl_r[0] -= k1;
             cl_r[1] += k1;
             cl_r[1] -= k2;
+            cout << "a" << a << "b" << b << endl;
             cout << " i "<<i << " k1 " << k1 << " k2 " << k2 << endl;
             cout << "r " << cl_r[0] << " " << cl_r[1] << endl;
 
